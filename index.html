@@ -1,13 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andranik Kasian — Network & Fiber-Optic Technician | IoT</title>
+    <title>Portfolio · Andranik Kasian</title>
     <meta
       name="description"
-      content="Andranik Kasian — network and fiber-optic technician in Yerevan, Armenia. XGS-PON research, IoT prototypes with ESP32, growing into PCB design."
+      content="Portfolio of Andranik Kasian, Yerevan: telecommunications and fiber-optic networks, IoT prototypes with ESP32, PCB design."
     />
+
+    <!-- Favicon: AK -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='2' width='60' height='60' rx='14' fill='%230a0f0d' stroke='%232ee59d' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='700' fill='%232ee59d' text-anchor='middle'%3EAK%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Link preview (Telegram, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kasian.me/" />
+    <meta property="og:site_name" content="kasian.me" />
+    <meta
+      property="og:title"
+      content="Andranik Kasian — Telecommunications · IoT · PCB"
+    />
+    <meta
+      property="og:description"
+      content="Telecommunications and fiber-optic networks, IoT prototypes with ESP32, PCB design. Published XGS-PON research, 2nd place hackathon. Yerevan, Armenia."
+    />
+    <meta property="og:image" content="https://kasian.me/photo.png" />
+    <meta name="twitter:card" content="summary" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -40,6 +62,12 @@
         --accent: #0b9b63;
         --accent2: #a8741a;
       }
+      html[data-lang="en"] .ru {
+        display: none !important;
+      }
+      html[data-lang="ru"] .en {
+        display: none !important;
+      }
       * {
         box-sizing: border-box;
         margin: 0;
@@ -57,6 +85,9 @@
           background 0.3s,
           color 0.3s;
       }
+      body.locked {
+        overflow: hidden;
+      }
       body::before {
         content: "";
         position: fixed;
@@ -69,6 +100,9 @@
       a {
         color: inherit;
         text-decoration: none;
+      }
+      button {
+        font-family: inherit;
       }
       .wrap {
         max-width: 1080px;
@@ -96,13 +130,18 @@
       }
       .links {
         display: flex;
-        gap: 28px;
+        gap: 26px;
         align-items: center;
         font-size: 14px;
         color: var(--muted);
       }
       .links a:hover {
         color: var(--accent);
+      }
+      .tools {
+        display: flex;
+        gap: 8px;
+        align-items: center;
       }
       .theme {
         background: none;
@@ -114,8 +153,40 @@
         cursor: pointer;
         font-size: 18px;
       }
+      .lang {
+        display: flex;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        font-family: var(--mono);
+        font-size: 12px;
+      }
+      .lang button {
+        background: none;
+        border: 0;
+        color: var(--muted);
+        padding: 0 10px;
+        height: 34px;
+        cursor: pointer;
+      }
+      .lang button.on {
+        background: var(--accent);
+        color: #04140c;
+        font-weight: 500;
+      }
       .hero {
-        padding: 110px 0 80px;
+        padding: 100px 0 80px;
+      }
+      .hero-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 48px;
+        flex-wrap: wrap-reverse;
+      }
+      .hero-text {
+        flex: 1;
+        min-width: 280px;
       }
       .kicker {
         font-family: var(--mono);
@@ -143,9 +214,59 @@
         font-weight: 500;
       }
       .lead {
-        max-width: 640px;
+        max-width: 620px;
         color: var(--muted);
         font-size: 17px;
+      }
+      .avatar {
+        position: relative;
+        width: 240px;
+        height: 240px;
+        flex-shrink: 0;
+      }
+      .avatar::before {
+        content: "";
+        position: absolute;
+        inset: -10px;
+        border-radius: 50%;
+        border: 1px dashed var(--accent);
+        opacity: 0.5;
+      }
+      .avatar img,
+      .avatar .ph {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 3px solid var(--accent);
+        object-fit: cover;
+        box-shadow: 0 0 50px color-mix(in srgb, var(--accent) 25%, transparent);
+        background: var(--card);
+      }
+      .avatar .ph {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--mono);
+        font-size: 64px;
+        color: var(--accent);
+      }
+      .avatar.nophoto img {
+        display: none;
+      }
+      .avatar.nophoto .ph {
+        display: flex;
+      }
+      .pill {
+        position: absolute;
+        bottom: 14px;
+        right: -6px;
+        background: var(--bg);
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 999px;
       }
       .cta {
         display: flex;
@@ -163,6 +284,9 @@
         font-size: 15px;
         border: 1px solid var(--line);
         transition: 0.2s;
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
       }
       .btn.primary {
         background: var(--accent);
@@ -187,7 +311,7 @@
       }
       .stat b {
         display: block;
-        font-size: 28px;
+        font-size: 26px;
         color: var(--accent);
         font-family: var(--mono);
         font-weight: 500;
@@ -359,12 +483,90 @@
         opacity: 1;
         transform: none;
       }
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(6px);
+      }
+      .modal.open {
+        display: flex;
+        animation: fade 0.25s ease;
+      }
+      .viewer {
+        width: min(900px, 100%);
+        height: min(92vh, 1200px);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      }
+      .viewer-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+      .viewer-title {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .viewer-actions {
+        display: flex;
+        gap: 8px;
+      }
+      .viewer-actions .btn {
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+        justify-content: center;
+        padding: 0 !important;
+        font-size: 18px;
+      }
+      .viewer iframe {
+        flex: 1;
+        width: 100%;
+        border: 0;
+        background: #525659;
+      }
+      @keyframes fade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
       @media (max-width: 720px) {
         .links a {
           display: none;
         }
         .hero {
-          padding: 70px 0 50px;
+          padding: 60px 0 50px;
+        }
+        .hero-top {
+          justify-content: center;
+        }
+        .avatar {
+          width: 180px;
+          height: 180px;
         }
         section {
           padding: 56px 0;
@@ -382,56 +584,135 @@
       <div class="wrap">
         <a href="#" class="logo">andranik.kasian</a>
         <div class="links">
-          <a href="#projects">Projects</a
-          ><a href="#publications">Publications</a
-          ><a href="#experience">Experience</a><a href="#skills">Skills</a
-          ><a href="#contact">Contact</a>
-          <button class="theme" id="theme" aria-label="Toggle theme">
-            <i class="ti ti-sun"></i>
-          </button>
+          <a href="#projects"
+            ><span class="en">Projects</span><span class="ru">Проекты</span></a
+          >
+          <a href="#publications"
+            ><span class="en">Publications</span
+            ><span class="ru">Публикации</span></a
+          >
+          <a href="#experience"
+            ><span class="en">Experience</span><span class="ru">Опыт</span></a
+          >
+          <a href="#skills"
+            ><span class="en">Skills</span><span class="ru">Навыки</span></a
+          >
+          <a href="#contact"
+            ><span class="en">Contact</span><span class="ru">Контакты</span></a
+          >
+          <div class="tools">
+            <div class="lang" role="group" aria-label="Language">
+              <button data-l="en">EN</button><button data-l="ru">RU</button>
+            </div>
+            <button class="theme" id="theme" aria-label="Toggle theme">
+              <i class="ti ti-sun"></i>
+            </button>
+          </div>
         </div>
       </div>
     </nav>
 
     <header class="hero">
       <div class="wrap">
-        <div class="kicker">Yerevan, Armenia · open to full-time work</div>
-        <h1>Andranik <span>Kasian</span></h1>
-        <div class="role">
-          Network &amp; Fiber-Optic Technician · IoT &amp; Electronics
-        </div>
-        <p class="lead">
-          I keep networks running, install structured cabling and fiber, and
-          build IoT prototypes with ESP32. Published research on XGS-PON access
-          networks. Currently studying Infocommunication Technologies at
-          Russian-Armenian University and growing into PCB design.
-        </p>
-        <div class="cta">
-          <a class="btn primary" href="cv.pdf" download
-            ><i class="ti ti-download"></i> Download CV</a
-          >
-          <a class="btn" href="mailto:andranik.kasian@gmail.com"
-            ><i class="ti ti-mail"></i> Email me</a
-          >
-          <a
-            class="btn"
-            href="https://linkedin.com/in/andranik-kasian"
-            target="_blank"
-            ><i class="ti ti-brand-linkedin"></i> LinkedIn</a
-          >
+        <div class="hero-top">
+          <div class="hero-text">
+            <div class="kicker">
+              <span class="en">Yerevan, Armenia · open to full-time work</span
+              ><span class="ru"
+                >Ереван, Армения · открыт к работе на полный день</span
+              >
+            </div>
+            <h1>
+              <span class="en" style="color: inherit"
+                >Andranik <span>Kasian</span></span
+              ><span class="ru" style="color: inherit"
+                >Андраник <span>Касян</span></span
+              >
+            </h1>
+            <div class="role">
+              <span class="en">Telecommunications · IoT · PCB</span
+              ><span class="ru">Телекоммуникации · IoT · Печатные платы</span>
+            </div>
+            <p class="lead">
+              <span class="en"
+                >I keep networks running, install structured cabling and fiber,
+                and build IoT prototypes with ESP32. Published research on
+                XGS-PON access networks. Currently studying Infocommunication
+                Technologies at Russian-Armenian University and growing into PCB
+                design.</span
+              >
+              <span class="ru"
+                >Обслуживаю сети, монтирую СКС и оптоволокно, создаю
+                IoT-прототипы на ESP32. Опубликовал исследование по сетям
+                доступа XGS-PON. Учусь в Российско-Армянском университете по
+                направлению «Инфокоммуникационные технологии» и развиваюсь в
+                проектировании печатных плат.</span
+              >
+            </p>
+            <div class="cta">
+              <a class="btn primary cv-open" href="cv.pdf" target="_blank"
+                ><i class="ti ti-file-cv"></i> <span class="en">View CV</span
+                ><span class="ru">Резюме</span></a
+              >
+              <a class="btn" href="mailto:andranik.kasian@gmail.com"
+                ><i class="ti ti-mail"></i> <span class="en">Email me</span
+                ><span class="ru">Написать</span></a
+              >
+              <a
+                class="btn"
+                href="https://linkedin.com/in/andranik-kasian"
+                target="_blank"
+                ><i class="ti ti-brand-linkedin"></i> LinkedIn</a
+              >
+            </div>
+          </div>
+          <div class="avatar" id="avatar">
+            <img
+              src="photo.png"
+              alt="Andranik Kasian"
+              onerror="
+                document.getElementById('avatar').classList.add('nophoto')
+              "
+            />
+            <div class="ph">AK</div>
+            <span class="pill"
+              ><span class="en">● available</span
+              ><span class="ru">● открыт к работе</span></span
+            >
+          </div>
         </div>
         <div class="stats">
           <div class="stat reveal">
-            <b>2nd place</b><small>University hackathon</small>
+            <b
+              ><span class="en">2nd place</span
+              ><span class="ru">2-е место</span></b
+            ><small
+              ><span class="en">University hackathon</span
+              ><span class="ru">Университетский хакатон</span></small
+            >
           </div>
           <div class="stat reveal">
-            <b>Published</b><small>XGS-PON research paper, 2026</small>
+            <b
+              ><span class="en">Published</span
+              ><span class="ru">Публикация</span></b
+            ><small
+              ><span class="en">XGS-PON research paper, 2026</span
+              ><span class="ru">Научная статья по XGS-PON, 2026</span></small
+            >
           </div>
           <div class="stat reveal">
-            <b>WorldSkills</b><small>Fiber-optic demo exam passed</small>
+            <b>WorldSkills</b
+            ><small
+              ><span class="en">Fiber-optic demo exam passed</span
+              ><span class="ru">Демоэкзамен по ВОЛС сдан</span></small
+            >
           </div>
           <div class="stat reveal">
-            <b>ESP32</b><small>IoT prototypes, C3 / S3 / 8266</small>
+            <b>ESP32</b
+            ><small
+              ><span class="en">IoT prototypes, C3 / S3 / 8266</span
+              ><span class="ru">IoT-прототипы, C3 / S3 / 8266</span></small
+            >
           </div>
         </div>
       </div>
@@ -439,18 +720,34 @@
 
     <section id="projects">
       <div class="wrap">
-        <div class="label">// Projects</div>
-        <h2>Things I've built</h2>
+        <div class="label">
+          // <span class="en">Projects</span><span class="ru">Проекты</span>
+        </div>
+        <h2>
+          <span class="en">Things I've built</span
+          ><span class="ru">Что я сделал</span>
+        </h2>
         <div class="grid">
           <article class="card reveal">
-            <span class="badge">2nd place</span>
+            <span class="badge"
+              ><span class="en">2nd place</span
+              ><span class="ru">2-е место</span></span
+            >
             <i class="ti ti-circle-dot ico"></i>
-            <h3>Open Manhole Detection Sensor</h3>
+            <h3>
+              <span class="en">Open Manhole Detection Sensor</span
+              ><span class="ru">Датчик открытых люков</span>
+            </h3>
             <p>
-              Hackathon project by a joint RAU &amp; YSU team of 3. I handled
-              the firmware and hardware assembly.
+              <span class="en"
+                >Hackathon project by a joint RAU &amp; YSU team of 3. I handled
+                the firmware and hardware assembly.</span
+              ><span class="ru"
+                >Проект хакатона совместной команды РАУ и ЕГУ из 3 человек. Я
+                отвечал за прошивку и сборку устройства.</span
+              >
             </p>
-            <ul>
+            <ul class="en">
               <li>Inductive sensor built on an LC circuit and ESP32-C3</li>
               <li>
                 Detects a missing cast-iron cover by its resonant frequency
@@ -461,6 +758,17 @@
                 shown to the jury
               </li>
             </ul>
+            <ul class="ru">
+              <li>Индуктивный датчик на LC-контуре и ESP32-C3</li>
+              <li>
+                Определяет отсутствие чугунной крышки по сдвигу резонансной
+                частоты
+              </li>
+              <li>
+                Уведомления по Wi-Fi в Android-приложение в реальном времени;
+                рабочий прототип представлен жюри
+              </li>
+            </ul>
             <div class="tags">
               <span class="tag">ESP32-C3</span
               ><span class="tag">LC circuit</span><span class="tag">Wi-Fi</span
@@ -468,14 +776,35 @@
             </div>
           </article>
           <article class="card reveal">
-            <span class="badge">Personal</span>
+            <span class="badge"
+              ><span class="en">Personal</span
+              ><span class="ru">Личный проект</span></span
+            >
             <i class="ti ti-antenna ico"></i>
-            <h3>RF Direction Finder</h3>
-            <p>A self-study project exploring radio-based positioning.</p>
-            <ul>
+            <h3>
+              <span class="en">RF Direction Finder</span
+              ><span class="ru">Радиопеленгатор</span>
+            </h3>
+            <p>
+              <span class="en"
+                >A self-study project exploring radio-based positioning.</span
+              ><span class="ru"
+                >Проект для самообучения: определение местоположения по
+                радиосигналу.</span
+              >
+            </p>
+            <ul class="en">
               <li>ESP32-C3 and ESP32-S3 modules with external antennas</li>
               <li>Locates a target object within a defined area</li>
               <li>Uses triangulation and RTT (Round-Trip Time) measurements</li>
+            </ul>
+            <ul class="ru">
+              <li>Модули ESP32-C3 и ESP32-S3 с внешними антеннами</li>
+              <li>Определяет местоположение объекта на заданном участке</li>
+              <li>
+                Использует триангуляцию и измерение RTT (времени прохождения
+                сигнала туда и обратно)
+              </li>
             </ul>
             <div class="tags">
               <span class="tag">ESP32-S3</span><span class="tag">Antennas</span
@@ -489,21 +818,41 @@
 
     <section id="publications">
       <div class="wrap">
-        <div class="label">// Publications</div>
-        <h2>Research</h2>
+        <div class="label">
+          // <span class="en">Publications</span
+          ><span class="ru">Публикации</span>
+        </div>
+        <h2>
+          <span class="en">Research</span><span class="ru">Исследования</span>
+        </h2>
         <article class="card reveal">
-          <span class="badge">Published · 2026</span>
+          <span class="badge"
+            ><span class="en">Published · 2026</span
+            ><span class="ru">Опубликовано · 2026</span></span
+          >
           <i class="ti ti-file-text ico"></i>
           <h3 style="max-width: 85%">
-            Design of a Fiber-Optic Backbone Based on XG-PON and XGS-PON
-            Technologies for Providing Multiservice Access
+            <span class="en"
+              >Design of a Fiber-Optic Backbone Based on XG-PON and XGS-PON
+              Technologies for Providing Multiservice Access</span
+            ><span class="ru"
+              >Проектирование волоконно-оптической магистрали на основе
+              технологий XG-PON и XGS-PON для обеспечения мультисервисного
+              доступа</span
+            >
           </h3>
           <p>
-            A. Kasian, E. Sivolenko · International Student Annual Scientific
-            Conference, Russian-Armenian University, April 2026 · Proceedings
-            Vol. I, pp. 41–50
+            <span class="en"
+              >A. Kasian, E. Sivolenko · International Student Annual Scientific
+              Conference, Russian-Armenian University, April 2026 · Proceedings
+              Vol. I, pp. 41–50</span
+            ><span class="ru"
+              >А.А. Касян, Э.Р. Сиволенко · Международная студенческая годичная
+              научная конференция, Российско-Армянский университет, апрель 2026
+              · Сборник, том I, с. 41–50</span
+            >
           </p>
-          <ul>
+          <ul class="en">
             <li>
               Compared GPON, XG-PON, and XGS-PON and justified a passive optical
               network (PON) design, identifying XGS-PON (symmetric 10 Gbps) as
@@ -519,6 +868,22 @@
               routing, DHCP, and IP telephony (Cisco CME)
             </li>
           </ul>
+          <ul class="ru">
+            <li>
+              Сравнил GPON, XG-PON и XGS-PON и обосновал выбор пассивной
+              оптической сети (PON); оптимальной технологией определена XGS-PON
+              (симметричные 10 Гбит/с)
+            </li>
+            <li>
+              Рассчитал энергетический бюджет линии с учётом затухания в волокне
+              и потерь на сварках, разъёмах и сплиттерах; подтвердил техническую
+              реализуемость сети
+            </li>
+            <li>
+              Смоделировал сеть в Cisco Packet Tracer: VLAN, маршрутизация между
+              VLAN, DHCP и IP-телефония (Cisco CME)
+            </li>
+          </ul>
           <div class="tags">
             <span class="tag">XGS-PON</span><span class="tag">Link budget</span
             ><span class="tag">Packet Tracer</span><span class="tag">VLAN</span
@@ -529,7 +894,9 @@
               class="btn primary"
               href="https://science.rau.am/storage/partner/files/8HjrYxUBp7fMNrDz595fiDoE2DwDffoLNXlDUdu6.pdf"
               target="_blank"
-              ><i class="ti ti-external-link"></i> Read paper (pp. 41–50)</a
+              ><i class="ti ti-external-link"></i>
+              <span class="en">Read paper (pp. 41–50)</span
+              ><span class="ru">Читать статью (с. 41–50)</span></a
             >
           </div>
         </article>
@@ -538,24 +905,49 @@
 
     <section id="experience">
       <div class="wrap">
-        <div class="label">// Experience &amp; Education</div>
-        <h2>Where I've worked and studied</h2>
+        <div class="label">
+          // <span class="en">Experience &amp; Education</span
+          ><span class="ru">Опыт и образование</span>
+        </div>
+        <h2>
+          <span class="en">Where I've worked and studied</span
+          ><span class="ru">Где я работал и учился</span>
+        </h2>
         <div class="timeline">
           <div class="item reveal">
-            <div class="date">2025 — 2029 (expected)</div>
+            <div class="date">
+              <span class="en">2025 — 2029 (expected)</span
+              ><span class="ru">2025 — 2029 (ожидается)</span>
+            </div>
             <h3>
-              Bachelor's, Infocommunication Technologies &amp; Communication
-              Systems
+              <span class="en"
+                >Bachelor's, Infocommunication Technologies &amp; Communication
+                Systems</span
+              ><span class="ru"
+                >Бакалавриат, Инфокоммуникационные технологии и системы
+                связи</span
+              >
             </h3>
             <div class="org">
-              Russian-Armenian University, Yerevan · full-time, 2nd year
+              <span class="en"
+                >Russian-Armenian University, Yerevan · full-time, 2nd
+                year</span
+              ><span class="ru"
+                >Российско-Армянский университет, Ереван · очно, 2-й курс</span
+              >
             </div>
           </div>
           <div class="item reveal">
             <div class="date">2022 — 2023</div>
-            <h3>System Administrator</h3>
-            <div class="org">Stelmakh Polyus Research Institute, Moscow</div>
-            <ul>
+            <h3>
+              <span class="en">System Administrator</span
+              ><span class="ru">Системный администратор</span>
+            </h3>
+            <div class="org">
+              <span class="en">Stelmakh Polyus Research Institute, Moscow</span
+              ><span class="ru">НИИ «Полюс» им. М.Ф. Стельмаха, Москва</span>
+            </div>
+            <ul class="en">
               <li>
                 Maintained the department's Windows workstations: OS and
                 software setup, troubleshooting
@@ -566,16 +958,38 @@
                 Windows Firewall
               </li>
             </ul>
+            <ul class="ru">
+              <li>
+                Обслуживал рабочие станции Windows в отделе: установка и
+                настройка ОС и программ, устранение неисправностей
+              </li>
+              <li>Прокладывал витую пару и монтировал розетки RJ-45</li>
+              <li>
+                Настраивал маршрутизаторы и коммутаторы D-Link, антивирус и
+                Windows Firewall
+              </li>
+            </ul>
           </div>
           <div class="item reveal">
             <div class="date">2018 — 2023</div>
             <h3>
-              Diploma, Infocommunication Networks &amp; Communication Systems
+              <span class="en"
+                >Diploma, Infocommunication Networks &amp; Communication
+                Systems</span
+              ><span class="ru"
+                >Диплом, Инфокоммуникационные сети и системы связи</span
+              >
             </h3>
             <div class="org">
-              College of Programming and Cybersecurity, RTU MIREA, Moscow
+              <span class="en"
+                >College of Programming and Cybersecurity, RTU MIREA,
+                Moscow</span
+              ><span class="ru"
+                >Колледж программирования и кибербезопасности РТУ МИРЭА,
+                Москва</span
+              >
             </div>
-            <ul>
+            <ul class="en">
               <li>
                 Thesis: LAN design for a division of the Stelmakh Polyus
                 Research Institute, with print and document services
@@ -590,15 +1004,41 @@
                 Electrician (2021–2022)
               </li>
             </ul>
+            <ul class="ru">
+              <li>
+                Дипломная работа: проектирование ЛВС для подразделения НИИ
+                «Полюс» с внедрением службы печати и документов
+              </li>
+              <li>
+                Подготовка по ВОЛС: сварка оптоволокна, муфты, оптические шкафы,
+                OTDR
+              </li>
+              <li>Сдан демонстрационный экзамен по стандартам WorldSkills</li>
+              <li>
+                Рабочая квалификация: электромонтёр по ремонту и монтажу
+                кабельных линий (2021–2022)
+              </li>
+            </ul>
           </div>
           <div class="item reveal">
             <div class="date">2019 — 2020</div>
-            <h3>Computer Repair Technician</h3>
-            <div class="org">Orange Service Center, Moscow</div>
-            <ul>
+            <h3>
+              <span class="en">Computer Repair Technician</span
+              ><span class="ru">Техник по ремонту компьютеров</span>
+            </h3>
+            <div class="org">
+              <span class="en">Orange Service Center, Moscow</span
+              ><span class="ru">Сервисный центр Orange, Москва</span>
+            </div>
+            <ul class="en">
               <li>
                 Diagnosed and repaired laptops; installed Windows and
                 application software
+              </li>
+            </ul>
+            <ul class="ru">
+              <li>
+                Диагностика и ремонт ноутбуков; установка Windows и программ
               </li>
             </ul>
           </div>
@@ -608,11 +1048,18 @@
 
     <section id="skills">
       <div class="wrap">
-        <div class="label">// Skills</div>
-        <h2>Toolbox</h2>
+        <div class="label">
+          // <span class="en">Skills</span><span class="ru">Навыки</span>
+        </div>
+        <h2>
+          <span class="en">Toolbox</span><span class="ru">Инструменты</span>
+        </h2>
         <div class="skills">
           <div class="card reveal">
-            <h4><i class="ti ti-network"></i>Networking</h4>
+            <h4>
+              <i class="ti ti-network"></i><span class="en">Networking</span
+              ><span class="ru">Сети</span>
+            </h4>
             <div class="tags">
               <span class="tag">TCP/IP</span><span class="tag">VLAN 802.1Q</span
               ><span class="tag">Inter-VLAN routing</span
@@ -622,18 +1069,31 @@
             </div>
           </div>
           <div class="card reveal">
-            <h4><i class="ti ti-route"></i>Fiber &amp; Cabling</h4>
+            <h4>
+              <i class="ti ti-route"></i
+              ><span class="en">Fiber &amp; Cabling</span
+              ><span class="ru">ВОЛС и СКС</span>
+            </h4>
             <div class="tags">
               <span class="tag">XGS-PON / GPON</span
-              ><span class="tag">Link budget</span
-              ><span class="tag">Fusion splicing</span
+              ><span class="tag"
+                ><span class="en">Link budget</span
+                ><span class="ru">Оптический бюджет</span></span
+              ><span class="tag"
+                ><span class="en">Fusion splicing</span
+                ><span class="ru">Сварка ОВ</span></span
               ><span class="tag">Fujikura</span><span class="tag">OTDR</span
-              ><span class="tag">Splice closures</span
+              ><span class="tag"
+                ><span class="en">Splice closures</span
+                ><span class="ru">Муфты</span></span
               ><span class="tag">RJ-45</span>
             </div>
           </div>
           <div class="card reveal">
-            <h4><i class="ti ti-server"></i>Systems</h4>
+            <h4>
+              <i class="ti ti-server"></i><span class="en">Systems</span
+              ><span class="ru">Системы</span>
+            </h4>
             <div class="tags">
               <span class="tag">Ubuntu</span
               ><span class="tag">Windows 10/11</span
@@ -643,7 +1103,11 @@
             </div>
           </div>
           <div class="card reveal">
-            <h4><i class="ti ti-cpu"></i>Electronics &amp; IoT</h4>
+            <h4>
+              <i class="ti ti-cpu"></i
+              ><span class="en">Electronics &amp; IoT</span
+              ><span class="ru">Электроника и IoT</span>
+            </h4>
             <div class="tags">
               <span class="tag">ESP32</span><span class="tag">ESP8266</span
               ><span class="tag">Arduino IDE</span><span class="tag">KiCad</span
@@ -651,19 +1115,35 @@
             </div>
           </div>
           <div class="card reveal">
-            <h4><i class="ti ti-code"></i>Software</h4>
+            <h4>
+              <i class="ti ti-code"></i><span class="en">Software</span
+              ><span class="ru">Программирование</span>
+            </h4>
             <div class="tags">
               <span class="tag">Android</span><span class="tag">HTML</span
               ><span class="tag">CSS</span><span class="tag">JavaScript</span
-              ><span class="tag">AI-assisted dev</span>
+              ><span class="tag"
+                ><span class="en">AI-assisted dev</span
+                ><span class="ru">Разработка с AI</span></span
+              >
             </div>
           </div>
           <div class="card reveal">
-            <h4><i class="ti ti-language"></i>Languages</h4>
+            <h4>
+              <i class="ti ti-language"></i><span class="en">Languages</span
+              ><span class="ru">Языки</span>
+            </h4>
             <div class="tags">
-              <span class="tag">Armenian — native</span
-              ><span class="tag">Russian — native</span
-              ><span class="tag">English — A2</span>
+              <span class="tag"
+                ><span class="en">Armenian — native</span
+                ><span class="ru">Армянский — родной</span></span
+              ><span class="tag"
+                ><span class="en">Russian — native</span
+                ><span class="ru">Русский — родной</span></span
+              ><span class="tag"
+                ><span class="en">English — A2</span
+                ><span class="ru">Английский — A2</span></span
+              >
             </div>
           </div>
         </div>
@@ -673,11 +1153,21 @@
     <section id="contact">
       <div class="wrap">
         <div class="contact reveal">
-          <div class="label">// Contact</div>
-          <h2 style="margin-bottom: 14px">Let's work together</h2>
+          <div class="label">
+            // <span class="en">Contact</span><span class="ru">Контакты</span>
+          </div>
+          <h2 style="margin-bottom: 14px">
+            <span class="en">Let's work together</span
+            ><span class="ru">Давайте работать вместе</span>
+          </h2>
           <p>
-            Looking for a role in networking, fiber optics, or IoT in Armenia.
-            Happy to talk.
+            <span class="en"
+              >Looking for a role in telecommunications, fiber optics, IoT, or
+              PCB design in Armenia. Happy to talk.</span
+            ><span class="ru"
+              >Ищу работу в сфере телекоммуникаций, ВОЛС, IoT или проектирования
+              печатных плат в Армении. Буду рад пообщаться.</span
+            >
           </p>
           <div class="cta">
             <a class="btn primary" href="mailto:andranik.kasian@gmail.com"
@@ -686,17 +1176,78 @@
             <a class="btn" href="tel:+37495717736"
               ><i class="ti ti-phone"></i> +374 95 717736</a
             >
+            <a class="btn cv-open" href="cv.pdf" target="_blank"
+              ><i class="ti ti-file-cv"></i> <span class="en">View CV</span
+              ><span class="ru">Резюме</span></a
+            >
           </div>
         </div>
       </div>
     </section>
 
-    <footer>© <span id="y"></span> Andranik Kasian</footer>
+    <footer>
+      © <span id="y"></span> <span class="en">Andranik Kasian</span
+      ><span class="ru">Андраник Касян</span> · kasian.me
+    </footer>
+
+    <div class="modal" id="cvModal" aria-hidden="true">
+      <div class="viewer" role="dialog" aria-label="CV viewer">
+        <div class="viewer-head">
+          <div class="viewer-title">
+            <i class="ti ti-file-cv"></i> Andranik Kasian — CV
+          </div>
+          <div class="viewer-actions">
+            <a
+              class="btn primary"
+              href="cv.pdf"
+              download="Andranik-Kasian-CV.pdf"
+              ><i class="ti ti-download"></i> <span class="en">Download</span
+              ><span class="ru">Скачать</span></a
+            >
+            <a
+              class="btn icon-btn"
+              href="cv.pdf"
+              target="_blank"
+              title="Open in new tab"
+              ><i class="ti ti-external-link"></i
+            ></a>
+            <button class="btn icon-btn" id="cvClose" title="Close">
+              <i class="ti ti-x"></i>
+            </button>
+          </div>
+        </div>
+        <iframe id="cvFrame" title="CV"></iframe>
+      </div>
+    </div>
 
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
-      const t = document.getElementById("theme"),
-        r = document.documentElement;
+      const r = document.documentElement;
+
+      // language
+      const titles = {
+        en: "Portfolio · Andranik Kasian",
+        ru: "Портфолио · Андраник Касян",
+      };
+      const setLang = (l) => {
+        r.dataset.lang = l;
+        r.lang = l;
+        document.title = titles[l];
+        document
+          .querySelectorAll(".lang button")
+          .forEach((b) => b.classList.toggle("on", b.dataset.l === l));
+        localStorage.setItem("lang", l);
+      };
+      setLang(
+        localStorage.getItem("lang") ||
+          ((navigator.language || "").startsWith("ru") ? "ru" : "en"),
+      );
+      document
+        .querySelectorAll(".lang button")
+        .forEach((b) => (b.onclick = () => setLang(b.dataset.l)));
+
+      // theme
+      const t = document.getElementById("theme");
       const set = (m) => {
         r.dataset.theme = m;
         t.innerHTML =
@@ -707,6 +1258,8 @@
       };
       set(localStorage.getItem("theme") || "dark");
       t.onclick = () => set(r.dataset.theme === "light" ? "dark" : "light");
+
+      // reveal on scroll
       const io = new IntersectionObserver(
         (e) =>
           e.forEach((x) => {
@@ -718,6 +1271,35 @@
         { threshold: 0.15 },
       );
       document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      // CV viewer
+      const modal = document.getElementById("cvModal"),
+        frame = document.getElementById("cvFrame");
+      const isMobile = () =>
+        window.matchMedia("(max-width:720px), (pointer:coarse)").matches;
+      const openCV = () => {
+        if (!frame.src) frame.src = "cv.pdf#view=FitH";
+        modal.classList.add("open");
+        document.body.classList.add("locked");
+      };
+      const closeCV = () => {
+        modal.classList.remove("open");
+        document.body.classList.remove("locked");
+      };
+      document.querySelectorAll(".cv-open").forEach((b) =>
+        b.addEventListener("click", (e) => {
+          if (isMobile()) return;
+          e.preventDefault();
+          openCV();
+        }),
+      );
+      document.getElementById("cvClose").onclick = closeCV;
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeCV();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeCV();
+      });
     </script>
   </body>
 </html>
