@@ -130,7 +130,7 @@
       }
       .links {
         display: flex;
-        gap: 26px;
+        gap: 24px;
         align-items: center;
         font-size: 14px;
         color: var(--muted);
@@ -204,7 +204,7 @@
         letter-spacing: -0.02em;
         font-weight: 700;
       }
-      h1 span {
+      h1 span span {
         color: var(--accent);
       }
       .role {
@@ -267,6 +267,7 @@
         font-size: 12px;
         padding: 4px 10px;
         border-radius: 999px;
+        white-space: nowrap;
       }
       .cta {
         display: flex;
@@ -395,6 +396,37 @@
         background: var(--bg2);
         border: 1px solid var(--line);
         color: var(--muted);
+      }
+      .cert {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .cert-thumb {
+        display: block;
+        width: 160px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        cursor: zoom-in;
+        transition: 0.2s;
+      }
+      .cert-thumb:hover {
+        border-color: var(--accent);
+        transform: scale(1.03);
+      }
+      .cert-thumb img {
+        width: 100%;
+        display: block;
+      }
+      .cert-body {
+        flex: 1;
+        min-width: 240px;
+      }
+      .cert-body h3 {
+        max-width: 85%;
       }
       .timeline {
         border-left: 2px solid var(--line);
@@ -546,6 +578,28 @@
         border: 0;
         background: #525659;
       }
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(6px);
+        cursor: zoom-out;
+      }
+      .lightbox.open {
+        display: flex;
+        animation: fade 0.25s ease;
+      }
+      .lightbox img {
+        max-width: 100%;
+        max-height: 92vh;
+        border-radius: 8px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+      }
       @keyframes fade {
         from {
           opacity: 0;
@@ -576,6 +630,9 @@
           display: inline-block;
           margin-bottom: 10px;
         }
+        .cert-body h3 {
+          max-width: 100%;
+        }
       }
     </style>
   </head>
@@ -594,8 +651,9 @@
           <a href="#experience"
             ><span class="en">Experience</span><span class="ru">Опыт</span></a
           >
-          <a href="#skills"
-            ><span class="en">Skills</span><span class="ru">Навыки</span></a
+          <a href="#certificates"
+            ><span class="en">Certificates</span
+            ><span class="ru">Сертификаты</span></a
           >
           <a href="#contact"
             ><span class="en">Contact</span><span class="ru">Контакты</span></a
@@ -623,11 +681,8 @@
               >
             </div>
             <h1>
-              <span class="en" style="color: inherit"
-                >Andranik <span>Kasian</span></span
-              ><span class="ru" style="color: inherit"
-                >Андраник <span>Касян</span></span
-              >
+              <span class="en">Andranik <span>Kasian</span></span
+              ><span class="ru">Андраник <span>Касян</span></span>
             </h1>
             <div class="role">
               <span class="en">Telecommunications · IoT · PCB</span
@@ -999,10 +1054,6 @@
                 cabinets, OTDR
               </li>
               <li>Passed the WorldSkills-standard demonstration exam</li>
-              <li>
-                Vocational qualification: Cable Line Installation and Repair
-                Electrician (2021–2022)
-              </li>
             </ul>
             <ul class="ru">
               <li>
@@ -1014,10 +1065,6 @@
                 OTDR
               </li>
               <li>Сдан демонстрационный экзамен по стандартам WorldSkills</li>
-              <li>
-                Рабочая квалификация: электромонтёр по ремонту и монтажу
-                кабельных линий (2021–2022)
-              </li>
             </ul>
           </div>
           <div class="item reveal">
@@ -1043,6 +1090,70 @@
             </ul>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <div class="wrap">
+        <div class="label">
+          // <span class="en">Certificates</span
+          ><span class="ru">Сертификаты</span>
+        </div>
+        <h2>
+          <span class="en">Qualifications</span
+          ><span class="ru">Квалификации</span>
+        </h2>
+        <article class="card reveal">
+          <span class="badge"
+            ><span class="en">Certified · 2023</span
+            ><span class="ru">Свидетельство · 2023</span></span
+          >
+          <div class="cert">
+            <a class="cert-thumb img-open" href="certificate.jpg"
+              ><img src="certificate.jpg" alt="Certificate"
+            /></a>
+            <div class="cert-body">
+              <i class="ti ti-certificate ico"></i>
+              <h3>
+                <span class="en"
+                  >Cable Line Installation and Repair Electrician</span
+                ><span class="ru"
+                  >Электромонтёр по ремонту и монтажу кабельных линий</span
+                >
+              </h3>
+              <p>
+                <span class="en"
+                  >Vocational qualification certificate (profession code 19859)
+                  · RTU MIREA, Moscow · Training: Sep 2021 – May 2022 ·
+                  Qualification exam passed</span
+                ><span class="ru"
+                  >Свидетельство о профессии рабочего (код профессии 19859) ·
+                  РТУ МИРЭА, Москва · Обучение: сентябрь 2021 – май 2022 ·
+                  Квалификационный экзамен сдан</span
+                >
+              </p>
+              <div class="tags">
+                <span class="tag"
+                  ><span class="en">Cable lines</span
+                  ><span class="ru">Кабельные линии</span></span
+                ><span class="tag"
+                  ><span class="en">Installation</span
+                  ><span class="ru">Монтаж</span></span
+                ><span class="tag"
+                  ><span class="en">Repair</span
+                  ><span class="ru">Ремонт</span></span
+                >
+              </div>
+              <div class="cta" style="margin-top: 20px">
+                <a class="btn primary img-open" href="certificate.jpg"
+                  ><i class="ti ti-eye"></i>
+                  <span class="en">View certificate</span
+                  ><span class="ru">Посмотреть свидетельство</span></a
+                >
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1190,6 +1301,7 @@
       ><span class="ru">Андраник Касян</span> · kasian.me
     </footer>
 
+    <!-- CV viewer -->
     <div class="modal" id="cvModal" aria-hidden="true">
       <div class="viewer" role="dialog" aria-label="CV viewer">
         <div class="viewer-head">
@@ -1219,6 +1331,9 @@
         <iframe id="cvFrame" title="CV"></iframe>
       </div>
     </div>
+
+    <!-- Certificate viewer -->
+    <div class="lightbox" id="lightbox"><img alt="Certificate" /></div>
 
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
@@ -1272,7 +1387,7 @@
       );
       document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-      // CV viewer
+      // CV viewer: pop-up on desktop, new tab on phones
       const modal = document.getElementById("cvModal"),
         frame = document.getElementById("cvFrame");
       const isMobile = () =>
@@ -1297,8 +1412,29 @@
       modal.addEventListener("click", (e) => {
         if (e.target === modal) closeCV();
       });
+
+      // certificate viewer
+      const lb = document.getElementById("lightbox");
+      document.querySelectorAll(".img-open").forEach((a) =>
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          lb.querySelector("img").src = a.getAttribute("href");
+          lb.classList.add("open");
+          document.body.classList.add("locked");
+        }),
+      );
+      const closeLb = () => {
+        lb.classList.remove("open");
+        document.body.classList.remove("locked");
+      };
+      lb.onclick = closeLb;
+
+      // Esc closes any viewer
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeCV();
+        if (e.key === "Escape") {
+          closeCV();
+          closeLb();
+        }
       });
     </script>
   </body>
