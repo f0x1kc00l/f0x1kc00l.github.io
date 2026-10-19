@@ -719,6 +719,9 @@
                 target="_blank"
                 ><i class="ti ti-brand-linkedin"></i> LinkedIn</a
               >
+              <a class="btn" href="https://github.com/f0x1kc00l" target="_blank"
+                ><i class="ti ti-brand-github"></i> GitHub</a
+              >
             </div>
           </div>
           <div class="avatar" id="avatar">
@@ -835,36 +838,68 @@
               ><span class="en">Personal</span
               ><span class="ru">Личный проект</span></span
             >
-            <i class="ti ti-antenna ico"></i>
+            <i class="ti ti-radar-2 ico"></i>
             <h3>
-              <span class="en">RF Direction Finder</span
-              ><span class="ru">Радиопеленгатор</span>
+              <span class="en">Local Positioning System on ESP32</span
+              ><span class="ru">Позиционирование на участке на ESP32</span>
             </h3>
             <p>
               <span class="en"
-                >A self-study project exploring radio-based positioning.</span
+                >Tracks a moving object within a defined area without GPS,
+                internet, or a router. Three fixed anchor nodes measure their distance to the
+                target and send it to a master node, which computes 2D
+                coordinates 50 times per second.</span
               ><span class="ru"
-                >Проект для самообучения: определение местоположения по
-                радиосигналу.</span
+                >Отслеживает движущийся объект на заданном участке без GPS,
+                интернета и роутера. Три фиксированных узла-якоря измеряют расстояние до
+                цели и передают его мастер-узлу, который вычисляет
+                2D-координаты 50 раз в секунду.</span
               >
             </p>
             <ul class="en">
-              <li>ESP32-C3 and ESP32-S3 modules with external antennas</li>
-              <li>Locates a target object within a defined area</li>
-              <li>Uses triangulation and RTT (Round-Trip Time) measurements</li>
+              <li>
+                Four ESP32 boards talking directly over ESP-NOW; distance
+                estimated from Wi-Fi RSSI
+              </li>
+              <li>
+                Position found by trilateration (intersection of three
+                circles), smoothed by an Extended Kalman Filter
+              </li>
+              <li>
+                Filter suppresses RSSI noise and rejects outlier measurements
+                automatically, so the position doesn't jump
+              </li>
+              <li>
+                Whole filter fits in ~300 bytes of RAM; code is structured to
+                add an IMU or a fourth anchor
+              </li>
             </ul>
             <ul class="ru">
-              <li>Модули ESP32-C3 и ESP32-S3 с внешними антеннами</li>
-              <li>Определяет местоположение объекта на заданном участке</li>
               <li>
-                Использует триангуляцию и измерение RTT (времени прохождения
-                сигнала туда и обратно)
+                Четыре платы ESP32 общаются напрямую по ESP-NOW; расстояние
+                оценивается по RSSI (силе Wi-Fi сигнала)
+              </li>
+              <li>
+                Координаты — трилатерацией (пересечение трёх окружностей),
+                сглаживание расширенным фильтром Калмана (EKF)
+              </li>
+              <li>
+                Фильтр убирает шум RSSI и автоматически отбрасывает выбросы —
+                позиция не прыгает
+              </li>
+              <li>
+                Весь фильтр занимает ~300 байт памяти; код легко расширить IMU
+                или четвёртым якорем
               </li>
             </ul>
             <div class="tags">
-              <span class="tag">ESP32-S3</span><span class="tag">Antennas</span
-              ><span class="tag">Triangulation</span
-              ><span class="tag">RTT</span>
+              <span class="tag">ESP32 × 4</span><span class="tag">ESP-NOW</span
+              ><span class="tag">RSSI</span><span class="tag">EKF</span
+              ><span class="tag"
+                ><span class="en">Trilateration</span
+                ><span class="ru">Трилатерация</span></span
+              ><span class="tag">C++ / Arduino</span
+              ><span class="tag">50 Hz</span>
             </div>
           </article>
         </div>
@@ -1286,6 +1321,9 @@
             >
             <a class="btn" href="tel:+37495717736"
               ><i class="ti ti-phone"></i> +374 95 717736</a
+            >
+            <a class="btn" href="https://github.com/f0x1kc00l" target="_blank"
+              ><i class="ti ti-brand-github"></i> GitHub</a
             >
             <a class="btn cv-open" href="cv.pdf" target="_blank"
               ><i class="ti ti-file-cv"></i> <span class="en">View CV</span
